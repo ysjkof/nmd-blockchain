@@ -2,9 +2,11 @@
   "include": ["src"], // 타입스크립트 파일이 어디에 있는지 위치를 알려준다. 컴파일 하고 싶은 ts가 있는 경로를 입력.
   "compilerOptions": {
     "outDir": "build", // 컴파일된 JS파일이 생성될 경로를 설정
-    "target": "ES5", // 어떤 버전의 JS로 컴파일 할 지 설정
-    "lib": ["ES6", "DOM"], // target을 사용할 실행환경을 설정한다; ES6을 지원하는 서버와 DOM(브라우저 환경을 뜻함)에서 코드를 실행시키겠다는 뜻; DOM을 설정한 뒤 .ts에서 document.을 하면 자동완성이 제공된다.
+    "target": "ES6", // 어떤 버전의 JS로 컴파일 할 지 설정
+    "lib": ["ES6"], // target을 사용할 실행환경을 설정한다; ES6을 지원하는 서버와 DOM(브라우저 환경을 뜻함)에서 코드를 실행시키겠다는 뜻; DOM을 설정한 뒤 .ts에서 document.을 하면 자동완성이 제공된다.
     "strict": true,
-    "allowJs": true
+    // "allowJs": true,
+    "esModuleInterop": true, // import * as crypto from "crypto" 이런식으로 불러오기 싫을 때
+    "module": "CommonJS" // 브라우저 앱을 만들고 있다면 UMD
   }
 }
