@@ -13,12 +13,12 @@ interface BlockShape {
   data: string;
 }
 class Block implements BlockShape {
-  hash: string;
+  public readonly hash: string;
   // hash는 prevHash, heigh, data, 세 값을 사용해 조합된다.
   constructor(
-    public prevHash: string,
-    public height: number,
-    public data: string
+    public readonly prevHash: string,
+    public readonly height: number,
+    public readonly data: string
   ) {
     this.hash = Block.calculateHash(prevHash, height, data);
   }
@@ -62,7 +62,8 @@ blockchain.addBlock("Third one");
 
 /// .push는 [...this.blocks]로 방어 함.
 blockchain.getBlocks().push(new Block("xxxxxxxxx", 111111, "HACKEDDDDDDDDDD"));
-// 이하는 어떻게 방어?
+
+// 이하는 Block의 data인자를 readonly로 만들어 읽기 전용으로 방어 함.
 blockchain.getBlocks()[blockchain.getBlocks().length - 1].data =
   "hell 12312312312";
 
